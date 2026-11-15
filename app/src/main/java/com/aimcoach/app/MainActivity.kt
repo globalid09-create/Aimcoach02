@@ -53,7 +53,7 @@ class MainActivity : Activity() {
             text = "Observe-only helper for Free Fire TRAINING mode. It never sends taps, " +
                 "never changes settings and never touches game files or memory. " +
                 "You change General and DPI in the game yourself.\n\n" +
-                "1. Enter your current General (0-100) and DPI.\n" +
+                "1. Enter your current General (1-200) and DPI.\n" +
                 "2. Press Start coach, allow \"Display over other apps\" and screen capture " +
                 "(choose entire screen).\n" +
                 "3. Open Free Fire training. Use LEARN, STOP, CHECK on the floating panel."
@@ -63,7 +63,7 @@ class MainActivity : Activity() {
 
         val c = engine.current()
         generalEt = EditText(this).apply {
-            hint = "General sensitivity (0-100)"
+            hint = "General sensitivity (1-200)"
             inputType = InputType.TYPE_CLASS_NUMBER
             setText(c.g.toString())
         }
@@ -121,8 +121,8 @@ class MainActivity : Activity() {
         }
         val g = generalEt.text.toString().trim().toIntOrNull()
         val d = dpiEt.text.toString().trim().toIntOrNull()
-        if (g == null || g !in 0..100) {
-            Toast.makeText(this, "General must be 0-100", Toast.LENGTH_LONG).show()
+        if (g == null || g !in 1..200) {
+            Toast.makeText(this, "General must be 1-200", Toast.LENGTH_LONG).show()
             return
         }
         if (d == null || d !in TuningEngine.DPI_MIN..TuningEngine.DPI_MAX) {
