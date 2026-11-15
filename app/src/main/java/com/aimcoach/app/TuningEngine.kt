@@ -63,12 +63,12 @@ class TuningEngine private constructor(context: Context) {
     @Synchronized fun current(): Setting = cur
 
     @Synchronized fun setCurrent(g: Int, d: Int) {
-        cur = Setting(g.coerceIn(0, 100), d.coerceIn(DPI_MIN, DPI_MAX))
+        cur = Setting(g.coerceIn(1, 200), d.coerceIn(DPI_MIN, DPI_MAX))
         save()
     }
 
     @Synchronized fun changeGeneral(steps: Int) {
-        cur = cur.copy(g = (cur.g + steps).coerceIn(0, 100))
+        cur = cur.copy(g = (cur.g + steps).coerceIn(1, 200))
         save()
     }
 
